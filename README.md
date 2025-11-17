@@ -55,3 +55,7 @@ Este proyecto está diseñado para ser completado en un periodo corto (≈ 3 sem
 - estequiometría
 - representación gráfica
 - base de datos completa de elementos
+  
+# Consideracones:
+
+Por el moemnto hacen falta varias revisiones en cuanto a la lógica de las propiedades químicas de cada elemento, principalmente ajustar mejor los cálculos de los electrones de valencia para que la información calculada sea más fiel con la realidad.
