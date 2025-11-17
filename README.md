@@ -13,7 +13,7 @@ El usuario puede ejecutar tareas típicas de química básica tales como:
 - Determinación de polaridad molecular básica (Por definirse)
 - Ejecución de reacciones químicas predefinidas (Por definirse)
 
-El sistema funciona como una tabla periódica avanzada, capaz de ejecutar procesos de análisis químico que comúnmente se realizan manualmente, facilitando la comprensión de conceptos fundamentales en química. Todo meniante una presentación amigable y organizada de los resultados.
+El sistema funciona como una tabla periódica avanzada, capaz de ejecutar procesos de análisis químico que comúnmente se realizan de forma manual, facilitando la comprensión de conceptos fundamentales en química. Todo meniante una presentación amigable y organizada de los resultados.
 
 # Arquitectura general
 
