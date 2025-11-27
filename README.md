@@ -6,14 +6,13 @@ Este proyecto es una implementación en C++ bajo el paradigma de Programación O
 
 # Funcionalidad
 El usuario puede ejecutar tareas típicas de química básica tales como:
+- Registro de Elementos, átomos y moléculas
 - Consulta y clasificación de elementos 
 - Creación de moléculas simples a partir de átomos
-- Cálculo de masa molar
-- Identificación del tipo de enlace según electronegatividad (Por definirse)
-- Determinación de polaridad molecular básica (Por definirse)
-- Ejecución de reacciones químicas predefinidas (Por definirse)
+- Registro de fórmulas básicas a traves de moléculas
+- Obtener el balanceo de la fórmula
 
-El sistema funciona como una tabla periódica avanzada, capaz de ejecutar procesos de análisis químico que comúnmente se realizan de forma manual, facilitando la comprensión de conceptos fundamentales en química. Todo meniante una presentación amigable y organizada de los resultados.
+El sistema es capaz de ejecutar procesos de análisis químico para hacer cálculos de balanceo sencillos en fórmulas químicas que comúnmente se realizan de forma manual, facilitando la comprensión de conceptos fundamentales en química. Todo meniante una presentación amigable y organizada de los resultados.
 
 # Arquitectura general
 
@@ -30,20 +29,25 @@ El proyecto se organiza alrededor de tres clases principales:
   - valencia aproximada
 (Esta clase funciona como una mini base de datos interna)
 
-- Átomo
+- Atomo
   Instancia derivada de un elemento, utilizada para formar moléculas:
   - referencia al elemento base
   - carga
   - electronegatividad
 
-- Molécula
-  Conjunto ordenado de átomos y enlaces que permite:
-  - almacenar una estructura molecular
-  - calcular propiedades (masa molar, polaridad simple)
-  - evaluar el tipo de enlace
-  - representar la composición química
+- Molecula
+  Conjunto de elementos que:
+  - almacena una estructura molecular
+  - calcula propiedades (masa molar, etc)
 
-Estas clases se integran mediante composición, permitiendo construir moléculas a partir de elementos y extender el sistema.
+Estas clases se integran mediante composición y agregación, permitiendo construir moléculas a partir de elementos y extender el sistema.
+
+Y cuenta con clases indispensables para el calculo del balanceo, como lo son: 
+- Formula (Que utiliza moléculas)
+- Reaccion (Que es una ecuación de moléculas expresadas en una fórmula)
+- TerminoReaccion (Que evalua el momento en que la reacción con ayuda de una flecha indica la separación entre reactivos y productos en una reacción)
+- Balanceador (Que calcula los coeficientes de las fórmmulas en la reacción)
+- Estequiometría (Que haría calculos de masa y moles en una reacción)
 
 # Alcance
 
