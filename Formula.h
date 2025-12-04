@@ -5,8 +5,8 @@
     - Contiene lógica para construir la fórmula química textual y calcular la masa molar.
 
     Autor: [Abril Odette Jiménez Sánchez - A01715095]
-    Fecha de creación: [2025]
-    Última modificación: [2025]
+    Fecha de creación: [03/12/2025]
+    Última modificación: [04/12/2025]
 */
 #ifndef FORMULA_H
 #define FORMULA_H
@@ -16,7 +16,7 @@
 #include <vector>
 #include <sstream>
 #include <map>
-#include "elemento.h" // Necesario para la agregación de Elemento
+#include "elemento.h" // Para la agregación de Elemento
 
 using namespace std;
 
@@ -32,9 +32,9 @@ private:
     vector<Componente> elementos; 
     int totalElementos; // Conteo de cuántos elementos UNICOS hay (H, O = 2)
     bool estable;
-    float masaMolar; // Usamos float para sencillez
+    float masaMolar;
 
-    // --- Métodos Privados de Cálculo ---
+    // --- Métodos Privados ---
     // Construye la fórmula química usando los símbolos y cantidades
     void construirFormula();
 
@@ -43,17 +43,13 @@ private:
     
 public:
     /* ======================= Constructores ======================= */
-    // Constructor por defecto
     Formula();
-
-    // Constructor con parámetros (solo nombre inicial)
     Formula(string n);
 
     /* ----------------------- Setters ----------------------- */
     void setNombre(string n);
     void setEstable(bool e);
     // Nota: La fórmula y masa molar se calculan internamente, no se asignan directamente.
-
     // Método principal de Agregación
     void agregarElemento(Elemento* e, int cantidad); 
 
@@ -77,5 +73,6 @@ public:
     // Muestra información completa de la molécula
     void mostrarInfo() const;
 };
+
 
 #endif
