@@ -1,8 +1,6 @@
 #include "tablaperiodica.h"
 
 /* ======================= Constructores y Destructor ======================= */
-
-// Constructor por defecto
 TablaPeriodica::TablaPeriodica() {
     // Carga los elementos al inicializar la tabla
     cargarElementos();
@@ -67,4 +65,5 @@ void TablaPeriodica::mostrarElementosPorTipo(string tipo) const {
         cout << "No se encontraron elementos de ese tipo.\n";
     }
     cout << "------------------------------------\n";
+
 }
