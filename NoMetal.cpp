@@ -43,9 +43,10 @@ string NoMetal::obtenerInformacion() const {
 
 /* ----------------------- Métodos ----------------------- */
 
-// Calcula un punto de ebullición de manera simple (didáctica)
+// Calcula un punto de ebullición
 float NoMetal::calcularPuntoEbullicion() const {
     // Lógica simple: Un punto de ebullición estimado basado en la electronegatividad
     // Usamos una fórmula sencilla para ilustrar el método.
     return 100.0f * (electronegatividad - 1.0f); 
+
 }
