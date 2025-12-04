@@ -5,8 +5,8 @@
     - Almacena el estado de balanceo y el nombre de la reacción.
 
     Autor: [Abril Odette Jiménez Sánchez - A01715095]
-    Fecha de creación: [2025]
-    Última modificación: [2025]
+    Fecha de creación: [03/12/2025]
+    Última modificación: [04/12/2025]
 */
 #ifndef REACCION_H
 #define REACCION_H
@@ -17,7 +17,7 @@
 #include <sstream>
 #include <map>
 #include <algorithm> // Para usar std::find
-#include "formula.h" // Necesario para la agregación de Formula
+#include "formula.h" // para la agregación de Formula
 
 using namespace std;
 
@@ -35,10 +35,7 @@ private:
 
 public:
     /* ======================= Constructores ======================= */
-    // Constructor por defecto
-    Reaccion(); 
-
-    // Constructor con parámetros (solo nombre inicial)
+    Reaccion();
     Reaccion(string n);
 
     /* ----------------------- Setters ----------------------- */
@@ -68,5 +65,6 @@ public:
     int getTotalAtomosReactivo(string simbolo) const;
     int getTotalAtomosProducto(string simbolo) const;
 };
+
 
 #endif
