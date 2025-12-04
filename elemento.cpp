@@ -1,75 +1,131 @@
 #include "elemento.h"
-/* ======================= Constructotes ======================= */
 
+/* ======================= Constructores ======================= */
+
+// Constructor por defecto
 Elemento::Elemento() {
     numeroAtomico = 0;
+    numeroMasa = 0;
+    neutrones = 0;
     nombre = "";
     simbolo = "";
     tipoElemento = "Desconocido";
     valencia = 0;
     valenciaModificada = false;
+    // estadosOxidacion se inicializa como vector vacío por defecto
 }
 
-Elemento::Elemento(int _numeroAtomico, string _nombre, string _simbolo) {
+// Constructor con parámetros
+Elemento::Elemento(int _numeroAtomico, string _nombre, string _simbolo, int _numeroMasa, vector<int> _estadosOxidacion) {
     numeroAtomico = _numeroAtomico;
     nombre = _nombre;
     simbolo = _simbolo;
-    valenciaModificada = false;
+    numeroMasa = _numeroMasa;
+    estadosOxidacion = _estadosOxidacion;
+
+    valenciaModificada = false; // Se reinicia para usar la automática
     actualizarPropiedades();
+    actualizarNeutrones();
+}
+
+// Método virtual para polimorfismo (implementación base)
+string Elemento::obtenerInformacion() const {
+    return "Elemento: " + nombre + " (" + simbolo + ")";
+}
+
+/* ----------------------- Getters ----------------------- */
+
+// Obtiene el número atómico
+int Elemento::getNumeroAtomico() const {
+    return numeroAtomico;
+}
+
+// Obtiene el nombre
+string Elemento::getNombre() const {
+    return nombre;
+}
+
+// Obtiene el símbolo
+string Elemento::getSimbolo() const {
+    return simbolo;
+}
+
+// Obtiene el tipo de elemento
+string Elemento::getTipoElemento() const {
+    return tipoElemento;
+}
+
+// Obtiene la valencia
+int Elemento::getValencia() const {
+    // Nota: Se usa valencia (el atributo) porque se actualiza en actualizarPropiedades
+    return valencia;
+}
+
+// Obtiene los estados de oxidación
+vector<int> Elemento::getEstadosOxidacion() const {
+    return estadosOxidacion;
+}
+
+// Obtiene si la valencia ha sido modificada manualmente
+bool Elemento::getValenciaModificada() const {
+    return valenciaModificada;
+}
+
+// Obtiene el número de masa (A)
+int Elemento::getA() const {
+    return numeroMasa;
+}
+
+// Obtiene el número de neutrones (N)
+int Elemento::getN() const {
+    return neutrones;
 }
 
 /* ----------------------- Setters ----------------------- */
 
+// Establece el número atómico y actualiza propiedades dependientes
 void Elemento::setNumeroAtomico(int _numeroAtomico) {
     numeroAtomico = _numeroAtomico;
     actualizarPropiedades();
+    actualizarNeutrones();
 }
 
+// Establece el nombre
 void Elemento::setNombre(string _nombre) {
     nombre = _nombre;
 }
 
+// Establece el símbolo
 void Elemento::setSimbolo(string _simbolo) {
     simbolo = _simbolo;
 }
 
-//En caso de que el usuario la ingrese:
+// Establece la valencia manualmente
 void Elemento::setValenciaManual(int _valencia) {
     valencia = _valencia;
     valenciaModificada = true;
 }
 
-/* ----------------------- Getters ----------------------- */
-
-int Elemento::getNumeroAtomico() const {
-    return numeroAtomico;
+// Establece el número de masa
+void Elemento::setNumeroMasa(int _numeroMasa) {
+    numeroMasa = _numeroMasa;
+    actualizarNeutrones();
 }
 
-string Elemento::getNombre() const {
-    return nombre;
+// Establece el vector de estados de oxidación
+void Elemento::setEstadosOxidacion(vector<int> _estadosOxidacion) {
+    estadosOxidacion = _estadosOxidacion;
 }
 
-string Elemento::getSimbolo() const {
-    return simbolo;
+/* ----------------------- Métodos Privados de Cálculo ----------------------- */
+
+// Calcula la cantidad de neutrones
+void Elemento::actualizarNeutrones() {
+    neutrones = numeroMasa - numeroAtomico;
+    if (neutrones < 0) neutrones = 0;
 }
 
-string Elemento::getTipoElemento() const {
-    return tipoElemento;
-}
-
-int Elemento::getValencia() {
-    if (valenciaModificada) {
-        return valencia;
-    }
-    else {
-    valencia = calcularValenciaAutomatica();
-    return valencia;
-    }
-}
-
-/* ----------------------- Métodos ----------------------- */
-
-// Determina tipo químico según categorías generales.
+// Determina tipo químico según categorías generales (lógica simplificada)
 void Elemento::determinarTipo() {
     int z = numeroAtomico;
 
@@ -86,14 +142,14 @@ void Elemento::determinarTipo() {
         tipoElemento = "Metal alcalinotérreo";
     }
     else if (z == 9 || z == 17 || z == 35 || z == 53 || z == 85) {
-        tipoElemento = "Halógeno";
+        tipoElemento = "Halogeno";
     }
     else if (z == 5 || z == 14 || z == 32 || z == 33 || z == 51 || z == 52) {
         tipoElemento = "Metaloide";
     }
     else if ((z >= 21 && z <= 30) || (z >= 39 && z <= 48) || 
              (z >= 72 && z <= 80) || (z >= 104 && z <= 112)) {
-        tipoElemento = "Metal de transición";
+        tipoElemento = "Metal de transicion";
     }
     else {
         tipoElemento = "Metal";
@@ -125,15 +181,20 @@ int Elemento::calcularValenciaAutomatica() const {
     return 1; // Default
 }
 
+// Actualiza todas las propiedades dependientes
 void Elemento::actualizarPropiedades() {
     determinarTipo();
-    valenciaModificada = false; // Reset si cambia número atómico
     valencia = calcularValenciaAutomatica();
 }
 
+/* ----------------------- Métodos ----------------------- */
+
+// Imprime información del elemento
 void Elemento::mostrarInfo() const {
     cout << "Elemento: " << nombre << " (" << simbolo << ")\n";
     cout << "Numero atomico: " << numeroAtomico << "\n";
     cout << "Tipo: " << tipoElemento << "\n";
-    cout << "Valencia: " << valencia << "\n\n";
+    cout << "Valencia: " << valencia << "\n";
+    cout << "Masa: " << numeroMasa << "\n";
+    cout << "Neutrones: " << neutrones << "\n\n";
 }
