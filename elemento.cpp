@@ -35,48 +35,39 @@ string Elemento::obtenerInformacion() const {
 
 /* ----------------------- Getters ----------------------- */
 
-// Obtiene el número atómico
 int Elemento::getNumeroAtomico() const {
     return numeroAtomico;
 }
 
-// Obtiene el nombre
 string Elemento::getNombre() const {
     return nombre;
 }
 
-// Obtiene el símbolo
 string Elemento::getSimbolo() const {
     return simbolo;
 }
 
-// Obtiene el tipo de elemento
 string Elemento::getTipoElemento() const {
     return tipoElemento;
 }
 
-// Obtiene la valencia
 int Elemento::getValencia() const {
     // Nota: Se usa valencia (el atributo) porque se actualiza en actualizarPropiedades
     return valencia;
 }
 
-// Obtiene los estados de oxidación
 vector<int> Elemento::getEstadosOxidacion() const {
     return estadosOxidacion;
 }
 
-// Obtiene si la valencia ha sido modificada manualmente
 bool Elemento::getValenciaModificada() const {
     return valenciaModificada;
 }
 
-// Obtiene el número de masa (A)
 int Elemento::getA() const {
     return numeroMasa;
 }
 
-// Obtiene el número de neutrones (N)
 int Elemento::getN() const {
     return neutrones;
 }
@@ -90,29 +81,24 @@ void Elemento::setNumeroAtomico(int _numeroAtomico) {
     actualizarNeutrones();
 }
 
-// Establece el nombre
 void Elemento::setNombre(string _nombre) {
     nombre = _nombre;
 }
 
-// Establece el símbolo
 void Elemento::setSimbolo(string _simbolo) {
     simbolo = _simbolo;
 }
 
-// Establece la valencia manualmente
 void Elemento::setValenciaManual(int _valencia) {
     valencia = _valencia;
     valenciaModificada = true;
 }
 
-// Establece el número de masa
 void Elemento::setNumeroMasa(int _numeroMasa) {
     numeroMasa = _numeroMasa;
     actualizarNeutrones();
 }
 
-// Establece el vector de estados de oxidación
 void Elemento::setEstadosOxidacion(vector<int> _estadosOxidacion) {
     estadosOxidacion = _estadosOxidacion;
 }
@@ -197,4 +183,5 @@ void Elemento::mostrarInfo() const {
     cout << "Valencia: " << valencia << "\n";
     cout << "Masa: " << numeroMasa << "\n";
     cout << "Neutrones: " << neutrones << "\n\n";
+
 }
