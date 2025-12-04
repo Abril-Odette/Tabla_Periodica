@@ -22,8 +22,6 @@ Formula::Formula(string n) {
 }
 
 /* ----------------------- Setters ----------------------- */
-
-// Establece el nombre de la fórmula
 void Formula::setNombre(string n) {
     nombre = n;
 }
@@ -35,7 +33,7 @@ void Formula::setEstable(bool e) {
 
 // Agrega un elemento a la fórmula (Agregación)
 void Formula::agregarElemento(Elemento* e, int cantidad) {
-    // Solo agregamos si el puntero es válido y la cantidad es positiva
+    // Solo si el puntero es válido y la cantidad es positiva
     if (e != nullptr && cantidad > 0) {
         // Almacena el puntero al Elemento y la cantidad
         elementos.push_back(make_pair(e, cantidad)); 
@@ -50,27 +48,22 @@ void Formula::agregarElemento(Elemento* e, int cantidad) {
 
 /* ----------------------- Getters ----------------------- */
 
-// Obtiene el nombre
 string Formula::getNombre() const {
     return nombre;
 }
 
-// Obtiene la fórmula textual
 string Formula::getFormula() const {
     return formula;
 }
 
-// Obtiene la cantidad de elementos UNICOS
 int Formula::getCantidadElementos() const {
     return totalElementos;
 }
 
-// Obtiene el estado de estabilidad
 bool Formula::esEstable() const {
     return estable;
 }
 
-// Obtiene la masa molar
 float Formula::getMasaMolar() const {
     return masaMolar;
 }
@@ -145,4 +138,5 @@ void Formula::mostrarInfo() const {
         cout << componente.first->getSimbolo() << ": " << componente.second << endl;
     }
     cout << "---------------------\n";
+
 }
