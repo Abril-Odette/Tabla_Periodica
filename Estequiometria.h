@@ -6,8 +6,8 @@
     - No almacena atributos, solo métodos de acción.
 
     Autor: [Abril Odette Jiménez Sánchez - A01715095]
-    Fecha de creación: [2025]
-    Última modificación: [2025]
+    Fecha de creación: [03/12/2025]
+    Última modificación: [04/12/2025]
 */
 #ifndef ESTEQUIOMETRIA_H
 #define ESTEQUIOMETRIA_H
@@ -24,7 +24,6 @@ class Estequiometria {
 
 public:
     /* ======================= Constructores ======================= */
-    // Constructor por defecto
     Estequiometria();
 
     /* ----------------------- Métodos de Conversión Molar ----------------------- */
@@ -44,5 +43,6 @@ public:
     // Calcula la masa necesaria de un reactivo para obtener una cantidad deseada de producto.
     float calcularMasaReactivoNecesaria(Reaccion* reaccion, float productoDeseado) const;
 };
+
 
 #endif
