@@ -15,8 +15,6 @@ Reaccion::Reaccion(string n) {
 }
 
 /* ----------------------- Setters ----------------------- */
-
-// Establece el nombre de la reacción
 void Reaccion::setNombre(string n) {
     nombre = n;
 }
@@ -42,12 +40,10 @@ void Reaccion::agregarProducto(Formula* formula, int coeficiente) {
 
 /* ----------------------- Getters ----------------------- */
 
-// Obtiene el nombre
 string Reaccion::getNombre() const {
     return nombre;
 }
 
-// Obtiene el estado de balanceo
 bool Reaccion::esBalanceada() const {
     return balanceada;
 }
@@ -174,4 +170,5 @@ int Reaccion::getTotalAtomosProducto(string simbolo) const {
         }
     }
     return total;
+
 }
