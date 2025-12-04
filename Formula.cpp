@@ -1,8 +1,6 @@
 #include "formula.h"
 
 /* ======================= Constructores ======================= */
-
-// Constructor por defecto
 Formula::Formula() {
     nombre = "";
     formula = "";
@@ -12,7 +10,6 @@ Formula::Formula() {
     // El vector 'elementos' se inicializa vacío por defecto
 }
 
-// Constructor con parámetros
 Formula::Formula(string n) {
     nombre = n;
     formula = "";
@@ -140,3 +137,4 @@ void Formula::mostrarInfo() const {
     cout << "---------------------\n";
 
 }
+
