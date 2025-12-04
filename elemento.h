@@ -7,7 +7,7 @@
 
     Autor: [Abril Odette Jiménez Sánchez - A01715095]
     Fecha de creación: [16/11/2025]
-    Última modificación: [03/12/2025]
+    Última modificación: [04/12/2025]
 */
 #ifndef ELEMENTO_H
 #define ELEMENTO_H
@@ -73,3 +73,4 @@ public:
 
 
 #endif
+
