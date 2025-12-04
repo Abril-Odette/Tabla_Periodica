@@ -2,8 +2,6 @@
 #include <numeric> // Para el cálculo de máximo común divisor (MCD)
 
 /* ======================= Constructores ======================= */
-
-// Constructor por defecto
 Balanceador::Balanceador() {
     // La matriz se inicializa vacía
 }
@@ -103,4 +101,5 @@ bool Balanceador::balancear(Reaccion* reaccion) {
 // Obtiene la matriz de balanceo
 vector<vector<float>> Balanceador::getMatrizBalanceo() const {
     return matrizBalanceo;
+
 }
