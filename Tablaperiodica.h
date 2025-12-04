@@ -5,8 +5,8 @@
     - Permite buscar un elemento por su símbolo.
 
     Autor: [Abril Odette Jiménez Sánchez - A01715095]
-    Fecha de creación: [2025]
-    Última modificación: [2025]
+    Fecha de creación: [03/12/2025]
+    Última modificación: [04/12/2025]
 */
 #ifndef TABLAPERIODICA_H
 #define TABLAPERIODICA_H
@@ -15,9 +15,9 @@
 #include <string>
 #include <map>
 #include <vector>
-#include "elemento.h" // Necesario para gestionar los objetos Elemento
-#include "metal.h"    // Necesario para crear objetos Metal
-#include "nometal.h"  // Necesario para crear objetos NoMetal
+#include "elemento.h" // para gestionar los objetos Elemento
+#include "metal.h"    // para crear objetos Metal
+#include "nometal.h"  // para crear objetos NoMetal
 
 using namespace std;
 
@@ -30,9 +30,7 @@ private:
 
 public:
     /* ======================= Constructores y Destructor ======================= */
-    // Constructor por defecto
     TablaPeriodica(); 
-
     // Destructor: Fundamental para liberar la memoria de los punteros (Regla de Tres/Cinco)
     ~TablaPeriodica(); 
 
@@ -46,5 +44,6 @@ public:
     // Muestra todos los elementos filtrados por un tipo (ej. "Metal", "Halogeno").
     void mostrarElementosPorTipo(string tipo) const;
 };
+
 
 #endif
