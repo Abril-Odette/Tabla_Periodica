@@ -60,8 +60,11 @@ Este proyecto está diseñado para ser completado en un periodo corto (≈ 3 sem
 - representación gráfica
 - base de datos completa de elementos
   
-# Consideracones:
+# Consideraciones:
 Requisitos para compilar: 
-g++ main.cpp elemento.cpp atomo.cpp molecula.cpp -o programa
+g++ main.cpp elemento.cpp metal.cpp nometal.cpp tablaperiodica.cpp formula.cpp reaccion.cpp balanceador.cpp estequiometria.cpp -o tablaperiodica
 
-Por el moemnto hacen falta varias revisiones en cuanto a la lógica de las propiedades químicas de cada elemento, principalmente ajustar mejor los cálculos de los electrones de valencia para que la información calculada sea más fiel con la realidad.
+Forma de correr:
+./tablaperiodica
+
+Por el moemnto hacen falta varias revisiones en cuanto a la fidelidad química de varios métodos para que la información calculada sea más fiel con la realidad.
