@@ -20,9 +20,9 @@ private:
 
 public:
     /* ======================= Constructores ======================= */
-    Metal(): Elemento();
+    Metal();
     // Constructor con parámetros, llama al constructor de la clase padre
-    Metal(int _numeroAtomico, string _nombre, string _simbolo, int _numeroMasa, vector<int> _estadosOxidacion, float _conductividadElectrica): Elemento(_numeroAtomico, _nombre, _simbolo, _numeroMasa, _estadosOxidacion);
+    Metal(int _numeroAtomico, string _nombre, string _simbolo, int _numeroMasa, vector<int> _estadosOxidacion, float _conductividadElectrica);
 
     /* ----------------------- Getters ----------------------- */
     float getConductividadElectrica() const;
@@ -40,3 +40,4 @@ public:
 
 
 #endif
+
