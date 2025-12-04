@@ -1,9 +1,7 @@
 #include "metal.h"
-#include <sstream> // Necesario para construir strings complejos de forma eficiente
+#include <sstream> // Para construir strings complejos
 
 /* ======================= Constructores ======================= */
-
-// Constructor por defecto, llama al constructor por defecto de Elemento
 Metal::Metal() : Elemento() {
     conductividadElectrica = 0.0f;
 }
@@ -47,4 +45,5 @@ string Metal::obtenerInformacion() const {
 bool Metal::reaccionaConAcido() const {
     // Si la conductividad es alta, asumimos que es más reactivo
     return conductividadElectrica > 1000.0f;
+
 }
