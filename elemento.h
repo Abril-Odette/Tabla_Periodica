@@ -6,8 +6,8 @@
     - Clase padre que será heredada por Metal, NoMetal y Halogeno.
 
     Autor: [Abril Odette Jiménez Sánchez - A01715095]
-    Fecha de creación: [2025]
-    Última modificación: [2025]
+    Fecha de creación: [16/11/2025]
+    Última modificación: [03/12/2025]
 */
 #ifndef ELEMENTO_H
 #define ELEMENTO_H
@@ -21,37 +21,25 @@ using namespace std;
 class Elemento {
 
 protected:
-    // --- Atributos de Identificación y Propiedades ---
     int numeroAtomico;
     int numeroMasa;
     int neutrones;
     string nombre;
     string simbolo;
     string tipoElemento;
-
-    // --- Atributos de Reactividad ---
-    vector<int> estadosOxidacion; // Nuevo: Permite múltiples estados de oxidación
+    vector<int> estadosOxidacion;
     int valencia;
     bool valenciaModificada;
 
     // --- Métodos Privados de Cálculo ---
-    // Determina el tipo de elemento según el número atómico.
     void determinarTipo();
-
-    // Calcula la valencia automática con reglas periódicas.
     int calcularValenciaAutomatica() const;
-
-    // Calcula la cantidad de neutrones a partir del número de masa y atómico.
     void actualizarNeutrones();
-
-    // Actualiza todas las propiedades dependientes del número atómico (tipo, valencia).
     void actualizarPropiedades();
 
 public:
     /* ======================= Constructores ======================= */
-    // Constructor por defecto
     Elemento(); 
-    
     // Constructor con parámetros: num. atómico, nombre, símbolo, masa atómica, y vector de estados de oxidación
     Elemento(int _numeroAtomico, string _nombre, string _simbolo, int _numeroMasa, vector<int> _estadosOxidacion);
 
@@ -67,8 +55,6 @@ public:
     int getValencia() const;
     vector<int> getEstadosOxidacion() const;
     bool getValenciaModificada() const;
-    
-    // Getters de datos nucleares
     int getA() const; // Número de masa
     int getN() const; // Neutrones
 
@@ -84,5 +70,6 @@ public:
     // Imprime información del elemento (para la clase base)
     void mostrarInfo() const;
 };
+
 
 #endif
