@@ -1,9 +1,7 @@
 #include "estequiometria.h"
-#include <cmath> // Necesario para funciones matemáticas como fmod o similares si se usaran.
+#include <cmath> //para funciones matemáticas
 
 /* ======================= Constructores ======================= */
-
-// Constructor por defecto
 Estequiometria::Estequiometria() {
     // No hay inicialización de atributos ya que no tiene.
 }
@@ -74,4 +72,5 @@ float Estequiometria::calcularMasaReactivoNecesaria(Reaccion* reaccion, float pr
 
     // 3. Convertir Moles de reactivo (R1) a Gramos
     return calcularGramos(molesR1, R1.first);
+
 }
