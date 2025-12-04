@@ -5,8 +5,8 @@
     - Contiene métodos para construir y resolver la matriz de balanceo.
 
     Autor: [Abril Odette Jiménez Sánchez - A01715095]
-    Fecha de creación: [2025]
-    Última modificación: [2025]
+    Fecha de creación: [03/12/2025]
+    Última modificación: [04/12/2025]
 */
 #ifndef BALANCEADOR_H
 #define BALANCEADOR_H
@@ -36,7 +36,6 @@ private:
 
 public:
     /* ======================= Constructores ======================= */
-    // Constructor por defecto
     Balanceador();
 
     /* ----------------------- Métodos de Servicio ----------------------- */
@@ -49,5 +48,6 @@ public:
     // Obtiene la matriz de balanceo (útil para mostrar al usuario o para depuración)
     vector<vector<float>> getMatrizBalanceo() const;
 };
+
 
 #endif
