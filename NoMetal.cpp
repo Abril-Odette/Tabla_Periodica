@@ -2,7 +2,6 @@
 #include <sstream>
 
 /* ======================= Constructores ======================= */
-
 // Constructor por defecto, llama al constructor por defecto de Elemento
 NoMetal::NoMetal() : Elemento() {
     electronegatividad = 0.0f;
@@ -16,15 +15,11 @@ NoMetal::NoMetal(int _numeroAtomico, string _nombre, string _simbolo, int _numer
 }
 
 /* ----------------------- Getters ----------------------- */
-
-// Obtiene la electronegatividad
 float NoMetal::getElectronegatividad() const {
     return electronegatividad;
 }
 
 /* ----------------------- Setters ----------------------- */
-
-// Establece la electronegatividad
 void NoMetal::setElectronegatividad(float _electronegatividad) {
     electronegatividad = _electronegatividad;
 }
@@ -50,3 +45,4 @@ float NoMetal::calcularPuntoEbullicion() const {
     return 100.0f * (electronegatividad - 1.0f); 
 
 }
+
