@@ -3,13 +3,13 @@
 #include <string>
 
 #include "elemento.h"
-#include "metal.h"
-#include "nometal.h"
-#include "tablaperiodica.h"
-#include "formula.h"
-#include "reaccion.h"
-#include "balanceador.h"
-#include "estequiometria.h"
+#include "Metal.h"
+#include "NoMetal.h"
+#include "Tablaperiodica.h"
+#include "Formula.h"
+#include "Reaccion.h"
+#include "Balanceador.h"
+#include "Estequiometria.h"
 
 using namespace std;
 
@@ -87,4 +87,5 @@ int main() {
     cout << "Gramos de H2O producidos a partir de " << gramosInicialesH2 << "g de H2: " << gramosAguaProducida << "g\n";
 
     return 0;
+
 }
