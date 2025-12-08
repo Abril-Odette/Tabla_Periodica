@@ -1,17 +1,17 @@
 #include "estequiometria.h"
-#include <cmath> //para funciones matemáticas
+#include <cmath> 
 
 /* ======================= Constructores ======================= */
 Estequiometria::Estequiometria() {
     // No hay inicialización de atributos ya que no tiene.
 }
 
-/* ----------------------- Métodos de Conversión Molar ----------------------- */
+/* ----------------------- Métodos de Conversión Molar (Básicos) ----------------------- */
 
 // Calcula los moles (n = masa / MM)
 double Estequiometria::calcularMoles(float masaGramos, Formula* formula) const {
-    if (formula != nullptr && formula->getMasaMolar() > 0.0f) {
-        // Se realiza la conversión de float a double para el cálculo final
+    if (formula != nullptr && formula->getMasaMolar() > 1e-6) { // Usamos tolerancia para evitar divisiones por cero
+        // Se realiza la conversión de float a double para el cálculo de alta precisión
         return (double)masaGramos / (double)formula->getMasaMolar();
     }
     return 0.0;
@@ -26,51 +26,41 @@ float Estequiometria::calcularGramos(double moles, Formula* formula) const {
     return 0.0f;
 }
 
-/* ----------------------- Métodos de Reacción ----------------------- */
+/* ----------------------- Métodos de Reacción (Robusto y Genérico) ----------------------- */
 
-// Calcula gramos de producto (se asume que el primer reactivo y el primer producto son los términos relevantes)
-float Estequiometria::calcularGramosProducto(Reaccion* reaccion, float gramosReactivo) const {
-    if (reaccion == nullptr || !reaccion->esBalanceada() || reaccion->getReactivos().empty() || reaccion->getProductos().empty()) {
-        cout << "Error: Reaccion invalida o no balanceada para calculos estequiometricos.\n";
+// Calcula la masa relacionada entre dos fórmulas de una reacción balanceada
+float Estequiometria::calcularMasaRelacionada(Reaccion* reaccion, float masaPartida, Formula* formulaPartida, Formula* formulaLlegada) const {
+    
+    // --- 1. Verificación y Coeficientes ---
+    if (reaccion == nullptr || !reaccion->esBalanceada() || formulaPartida == nullptr || formulaLlegada == nullptr) {
+        cout << "Error Estequiometria: Reaccion invalida o desbalanceada.\n";
+        return 0.0f;
+    }
+    
+    int coefPartida = reaccion->getCoeficiente(formulaPartida);
+    int coefLlegada = reaccion->getCoeficiente(formulaLlegada);
+
+    if (coefPartida <= 0 || coefLlegada <= 0) {
+        cout << "Error Estequiometria: Las formulas de partida o llegada no son parte de la reaccion.\n";
+        return 0.0f;
+    }
+    
+    // --- 2. Moles de Partida (Masa -> Moles) ---
+    // n_partida = masa_partida / MM_partida
+    double molesPartida = calcularMoles(masaPartida, formulaPartida);
+    
+    if (molesPartida <= 0.0) {
+        cout << "Error Estequiometria: La masa molar de la formula de partida es cero o invalida.\n";
         return 0.0f;
     }
 
-    // --- Lógica Simplificada Estequiométrica ---
-    // 1. Obtener la información del primer Reactivo (R1) y primer Producto (P1)
-    TerminoReaccion R1 = reaccion->getReactivos()[0];
-    TerminoReaccion P1 = reaccion->getProductos()[0];
+    // --- 3. Relación Molar (Moles Partida -> Moles Llegada) ---
+    // n_llegada = n_partida * (Coef_Llegada / Coef_Partida)
     
-    // 2. Calcular Moles del reactivo (R1)
-    double molesR1 = calcularMoles(gramosReactivo, R1.first);
+    double relacionMolar = (double)coefLlegada / (double)coefPartida;
+    double molesLlegada = molesPartida * relacionMolar;
     
-    // 3. Aplicar la relación molar (Moles R1 * (Coef. P1 / Coef. R1))
-    // Usamos el coeficiente estequiométrico para la conversión
-    double relacionMolar = (double)P1.second / (double)R1.second;
-    double molesP1 = molesR1 * relacionMolar;
-    
-    // 4. Convertir Moles de producto (P1) a Gramos
-    return calcularGramos(molesP1, P1.first);
-}
-
-// Calcula la masa necesaria de reactivo (inverso del cálculo anterior)
-float Estequiometria::calcularMasaReactivoNecesaria(Reaccion* reaccion, float productoDeseado) const {
-    if (reaccion == nullptr || !reaccion->esBalanceada() || reaccion->getReactivos().empty() || reaccion->getProductos().empty()) {
-        cout << "Error: Reaccion invalida o no balanceada para calculos estequiometricos.\n";
-        return 0.0f;
-    }
-
-    // --- Lógica Simplificada Estequiométrica (Inversa) ---
-    TerminoReaccion R1 = reaccion->getReactivos()[0];
-    TerminoReaccion P1 = reaccion->getProductos()[0];
-
-    // 1. Calcular Moles del producto deseado (P1)
-    double molesP1 = calcularMoles(productoDeseado, P1.first);
-
-    // 2. Aplicar la relación molar inversa (Moles P1 * (Coef. R1 / Coef. P1))
-    double relacionMolarInversa = (double)R1.second / (double)P1.second;
-    double molesR1 = molesP1 * relacionMolarInversa;
-
-    // 3. Convertir Moles de reactivo (R1) a Gramos
-    return calcularGramos(molesR1, R1.first);
-
+    // --- 4. Gramos de Llegada (Moles -> Masa) ---
+    // Masa_llegada = n_llegada * MM_llegada
+    return calcularGramos(molesLlegada, formulaLlegada);
 }
