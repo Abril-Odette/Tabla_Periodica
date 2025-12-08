@@ -6,7 +6,7 @@ Estequiometria::Estequiometria() {
     // No hay inicialización de atributos ya que no tiene.
 }
 
-/* ----------------------- Métodos de Conversión Molar (Básicos) ----------------------- */
+/* ----------------------- Métodos de Conversión Molar ----------------------- */
 
 // Calcula los moles (n = masa / MM)
 double Estequiometria::calcularMoles(float masaGramos, Formula* formula) const {
@@ -26,7 +26,7 @@ float Estequiometria::calcularGramos(double moles, Formula* formula) const {
     return 0.0f;
 }
 
-/* ----------------------- Métodos de Reacción (Robusto y Genérico) ----------------------- */
+/* ----------------------- Métodos de Reacción ----------------------- */
 
 // Calcula la masa relacionada entre dos fórmulas de una reacción balanceada
 float Estequiometria::calcularMasaRelacionada(Reaccion* reaccion, float masaPartida, Formula* formulaPartida, Formula* formulaLlegada) const {
@@ -64,3 +64,4 @@ float Estequiometria::calcularMasaRelacionada(Reaccion* reaccion, float masaPart
     // Masa_llegada = n_llegada * MM_llegada
     return calcularGramos(molesLlegada, formulaLlegada);
 }
+
