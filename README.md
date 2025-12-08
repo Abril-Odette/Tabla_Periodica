@@ -61,7 +61,7 @@ Este proyecto está diseñado para ser completado en un periodo corto (≈ 3 sem
   
 # Consideraciones:
 Requisitos para compilar: 
-g++ main.cpp elemento.cpp metal.cpp nometal.cpp tablaperiodica.cpp formula.cpp reaccion.cpp balanceador.cpp estequiometria.cpp -o tablaperiodica
+g++ main.cpp elemento.cpp Metal.cpp NoMetal.cpp Tablaperiodica.cpp Formula.cpp Reaccion.cpp Balanceador.cpp Estequiometria.cpp -o Proyecto
 
 Forma de correr:
 ./tablaperiodica
