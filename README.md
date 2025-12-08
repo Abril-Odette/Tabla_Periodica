@@ -1,69 +1,142 @@
-# Motor de Tabla Periódica 
+#  Aplicación de Balanceo y Estequiometría Química (POO Avanzada)
 
-# Descripción general
+## Descripción General
 
-Este proyecto es una implementación en C++ bajo el paradigma de Programación Orientada a Objetos, cuyo propósito es modelar una parte esencial de la química general mediante una tabla periódica, con los elementos, atómos y moléculas como clases y relaciones entre objetos. Con un carácter modular y extensible, su objetivo no es solo mostrar información, sino procesarla y automatizar tareas de análisis químico a un nivel introductorio.
+Este proyecto es una aplicación implementada en C++ bajo el paradigma de **Programación Orientada a Objetos (POO)**. Su propósito central es modelar una parte fundamental de la química: la **estructura atómica**, la **formulación química** y la **cuantificación de reacciones** (estequiometría).
 
-# Funcionalidad
-El usuario puede ejecutar tareas típicas de química básica tales como:
-- Registro de Elementos: La Tabla Periódica centraliza la carga y gestión de todos los elementos (Metal, NoMetal).
-- Clasificación y Herencia: Consulta de elementos especializados por tipo (Metal, NoMetal), demostrando Polimorfismo.
-- Creación de Fórmulas: Construcción de compuestos químicos (Formula) mediante la Agregación de elementos.
-- Cálculo Básico: Obtención de Masa Molar de cualquier compuesto creado.
-- Modelado de Reacciones: Creación de ecuaciones químicas (Reaccion) mediante la Agregación de las fórmulas.
-- Servicios de Lógica: El sistema es capaz de ejecutar procesos de análisis químico para:
-- Obtener el Balanceo simplificado de la ecuación química (Balanceador).
-- Realizar Cálculos Estequiométricos de masa y moles entre reactivos y productos (Estequiometria).
+La química se basa en principios de conservación, siendo el más crucial la **Ley de Conservación de la Materia** (o Ley de Lavoisier), que establece que la materia no se crea ni se destruye, solo se transforma. El **balanceo de ecuaciones**  es la traducción matemática de esta ley. La **Estequiometría** utiliza estas proporciones balanceadas para predecir o calcular las cantidades (masas o moles) de reactivos y productos.
 
-El sistema es capaz de ejecutar procesos de análisis químico para hacer cálculos de balanceo sencillos en fórmulas químicas que comúnmente se realizan de forma manual, facilitando la comprensión de conceptos fundamentales en química. Todo meniante una presentación amigable y organizada de los resultados.
+El proyecto busca ofrecer una herramienta modular, extensible y rigurosa que no solo permite la visualización de la información atómica, sino que también **procesa, balancea automáticamente y analiza reacciones químicas** (cálculos estequiométricos) mediante una arquitectura sólida basada en el diseño POO.
 
-# Arquitectura general
+---
 
-El proyecto utiliza la Programación Orientada a Objetos (POO) para modelar el sistema químico en tres capas principales que trabajan juntas:
-1. Datos Base y Herencia (El Catálogo Químico)
-   Elemento: Es la clase padre. Contiene la información universal del elemento (Z, símbolo, nombre).
-   Metal / NoMetal: Son las clases hijas que heredan de Elemento e implementan propiedades específicas (conductividad, electronegatividad), demostrando la Herencia y el Polimorfismo.
-2. Contenedores de Datos (Estructuras Químicas)TablaPeriodica:
-   Repositorio central. Almacena y es dueña de todos los objetos Elemento.
-   (Composición)Formula: Crea un compuesto químico (ej. H₂O). Usa los objetos Elemento cargados en la tabla.
-   (Agregación)Reaccion: Crea la ecuación química (ej. H₂ + O₂ $\rightarrow$ H₂O). Usa los objetos Formula. (Agregación)
-3. Servicios (La Lógica de Cálculo)
-   Balanceador: Recibe una Reaccion y calcula los coeficientes estequiométricos.
-   Estequiometria: Recibe una Formula o una Reaccion y realiza cálculos de conversión de masa y moles.
-   
-Y cuenta con clases indispensables para el calculo del balanceo, como lo son: 
-- Formula (Que utiliza moléculas)
-- Reaccion (Que es una ecuación de moléculas expresadas en una fórmula)
-- TerminoReaccion (Que evalua el momento en que la reacción con ayuda de una flecha indica la separación entre reactivos y productos en una reacción)
-- Balanceador (Que calcula los coeficientes de las fórmmulas en la reacción)
-- Estequiometría (Que haría calculos de masa y moles en una reacción)
+##  Arquitectura General y Modelo POO
 
-# Modificaciones
+La solución está construida bajo un diseño POO que separa claramente las responsabilidades en capas:
 
-Esta versión del proyecto refactoriza la estructura anterior para cumplir rigurosamente con los principios de POO:Eliminación de Clases Redundantes: 
-- Se eliminaron las clases Atomo y Molecula.
-Las funcionalidades de Atomo (gestionar carga/neutrones) y Molecula (agrupar elementos y calcular masa molar) se consolidaron en las clases Elemento (para datos atómicos) y Formula (para el compuesto agrupador). Esto evita la redundancia conceptual y el exceso de capas de abstracción, resultando en un sistema más directo y fácil de mantener.
-- Implementación de Herencia: El diseño anterior carecía de herencia.
-La nueva arquitectura usa la herencia Elemento -> Metal/NoMetal para representar la especialización química de manera clara, cumpliendo un requisito clave del proyecto.
-- Claridad en Punteros: Se definió que la TablaPeriodica es la dueña de los Elementos (Composición), mientras que Formula y Reaccion simplemente los usan (Agregación). Esto es fundamental para el manejo de memoria en C++.
-- Desacoplamiento (Servicios): Las clases de cálculo Balanceador y Estequiometria se implementaron como clases de Servicio (sin atributos propios). Esto demuestra el principio de bajo acoplamiento, ya que solo reciben y procesan los objetos de datos necesarios, resultando en un diseño POO superior y más mantenible.
-- 
-# Alcance
+1.  **Datos Base y Herencia (El Catálogo Químico):**
+    * **Elemento** (Clase Base) : Contiene la información universal del átomo (símbolo, nombre, número atómico).
+    * **Metal** y **NoMetal** (Clases Derivadas): Heredan de `Elemento` e implementan propiedades específicas (`ConductividadEléctrica` para Metales y `Electronegatividad` para No Metales).
+    * **TablaPeriodica** (Composición): Funciona como un repositorio central que almacena y dispensa punteros a objetos `Elemento`.
 
-Este proyecto está diseñado para ser completado en un periodo corto (≈ 3 semanas), pero con una arquitectura sólida que permite posibles extensiones futuras:
-- estructura de Lewis automática
-- geometría molecular VSEPR
-- balanceo de ecuaciones químicas
-- cargas formales
-- estequiometría
-- representación gráfica
-- base de datos completa de elementos
-  
-# Consideraciones:
-Requisitos para compilar: 
-g++ main.cpp elemento.cpp Metal.cpp NoMetal.cpp Tablaperiodica.cpp Formula.cpp Reaccion.cpp Balanceador.cpp Estequiometria.cpp -o Proyecto
+2.  **Contenedores de Datos (Estructuras Químicas):**
+    * **Formula:** Compuesto químico que utiliza **Composición/Agregación** al contener una lista de punteros a `Elemento` y sus respectivos subíndices. Es capaz de calcular su propia Masa Molar.
+    * **Reaccion:** Contiene dos listas de objetos `Formula` (Reactivos y Productos). Modificación clave: Su estructura fue modificada para manejar la reacción como una **ecuación química dinámica**.
 
-Forma de correr:
-./tablaperiodica
+3.  **Módulos de Servicio (Lógica del Negocio):**
+    * **Balanceador:** Contiene la lógica matemática (método algebraico) para calcular los coeficientes estequiométricos enteros mínimos de una `Reaccion`.
+    * **Estequiometria:** Contiene los métodos para realizar cálculos de conversión de masa a masa o masa a moles, utilizando los coeficientes de una reacción **balanceada**.
 
-Por el moemnto hacen falta varias revisiones en cuanto a la fidelidad química de varios métodos para que la información calculada sea más fiel con la realidad.
+---
+
+##  Funcionalidad Implementada
+
+El usuario puede ejecutar tareas típicas de química básica, ahora con soporte para el balanceo y cálculo avanzado:
+
+* **Registro de Elementos:** Crea Elementos diferenciados (Metales/NoMetales).
+* **Creación de Fórmulas:** Construye compuestos químicos a partir de Elementos registrados y calcula su Masa Molar.
+* **Modelado de Reacciones:** Define reacciones agregando Fórmulas como Reactivos y Productos.
+* **Balanceo Automático:** Balancea ecuaciones químicas utilizando el método algebraico para determinar los coeficientes estequiométricos correctos.
+* **Cálculos Estequiométricos (Masa-Masa):** Realiza cálculos de gramos de una sustancia basados en la masa conocida de otra sustancia participante en la reacción balanceada.
+* **Modo Interactivo (CLI):** Un *main* dinámico que permite registrar elementos y fórmulas, balancear cualquier reacción y ejecutar cálculos.
+
+---
+
+##  Pruebas de Funcionalidad Inicial (Modo Interactivo)
+
+Para verificar el funcionamiento del balanceo y la estequiometría, se recomienda registrar los elementos y fórmulas necesarios para la reacción de la **Fotosíntesis** ($\text{CO}_2 + \text{H}_2\text{O} \to \text{C}_6\text{H}_{12}\text{O}_6 + \text{O}_2$), la cual debe balancearse a $6\text{CO}_2 + 6\text{H}_2\text{O} \to 1\text{C}_6\text{H}_{12}\text{O}_6 + 6\text{O}_2$.
+
+Sigue los siguientes pasos en la **Opción 2: INSTANCIA INTERACTIVA**.
+
+### Paso 1: Registrar Elementos Base (Opción 1 del menú Interactivo)
+
+| Símbolo | Nombre | Z | A | Tipo | Dato Adicional |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| **C** | Carbono | 6 | 12 | No Metal | Electronegatividad: 2.55 |
+| **H** | Hidrógeno | 1 | 1 | No Metal | Electronegatividad: 2.20 |
+| **O** | Oxígeno | 8 | 16 | No Metal | Electronegatividad: 3.44 |
+
+### Paso 2: Registrar Fórmulas (Opción 2 del menú Interactivo)
+
+| Nombre de la Fórmula | Fórmula Química | Elemento + Subíndice |
+| :---: | :---: | :---: |
+| **Dióxido de Carbono** | $\text{CO}_2$ | C: 1, O: 2 |
+| **Agua** | $\text{H}_2\text{O}$ | H: 2, O: 1 |
+| **Glucosa** | $\text{C}_6\text{H}_{12}\text{O}_6$ | C: 6, H: 12, O: 6 |
+| **Dioxígeno** | $\text{O}_2$ | O: 2 |
+
+### Paso 3: Balancear la Reacción (Opción 3 del menú Interactivo)
+
+1. **Nombre de la Reacción:** Fotosíntesis
+2. **Reactivos (Entrada):**
+    * Ingrese el nombre: **Dióxido de Carbono**
+    * Ingrese el nombre: **Agua**
+    * Ingrese el nombre: **fin**
+3. **Productos (Entrada):**
+    * Ingrese el nombre: **Glucosa**
+    * Ingrese el nombre: **Dioxígeno**
+    * Ingrese el nombre: **fin**
+4. **Resultado esperado:** El sistema deberá mostrar la reacción balanceada: $6\text{CO}_2 + 6\text{H}_2\text{O} \to 1\text{C}_6\text{H}_{12}\text{O}_6 + 6\text{O}_2$.
+
+### Paso 4: Calcular Estequiometría (Opción 4 del menú Interactivo)
+
+1. **Repetir Pasos de Balanceo (mismos reactivos/productos).**
+2. **Fórmula de PARTIDA:** Dióxido de Carbono
+3. **Masa en gramos de la PARTIDA (Ejemplo):** 264.0 (g)
+4. **Fórmula de LLEGADA:** Glucosa
+5. **Resultado esperado:**
+    * $\text{Masa Molar Dióxido de Carbono} \approx 44 \text{ g/mol}$
+    * $264.0 \text{ g} / 44 \text{ g/mol} = 6 \text{ moles de } \text{CO}_2$
+    * Por la estequiometría ($6:1$), se producirá $1 \text{ mol de Glucosa}$.
+    * $\text{Masa Molar Glucosa} \approx 180 \text{ g/mol}$
+    * $\text{Masa de Glucosa} = 1 \text{ mol} \times 180 \text{ g/mol} = 180 \text{ g}$.
+    * **El programa debe retornar:** $180.0 \text{ g de Glucosa}$.
+
+***
+
+##  Limitaciones y Alcance Futuro
+
+El proyecto cumple satisfactoriamente con todos los requerimientos funcionales esperados (registro, formulación, balanceo y estequiometría).
+
+**Alcance de la Interacción:**
+* El **módulo principal de interacción con el usuario (main)** actualmente implementado a través de la Consola (CLI) es completamente **funcional y estable**.
+* **Limitación actual:** Su interfaz es básica. Se reconoce que la **experiencia de usuario** podría diseñarse de forma significativamente más cómoda e intuitiva (por ejemplo, con una interfaz gráfica o un *parser* más sofisticado para la entrada de reacciones).
+* **Posible mejora futura:** Se podría implementar el uso de **archivos** o una pequeña base de datos para almacenar permanentemente los registros de Elementos, Fórmulas y Reacciones, en lugar de depender únicamente de la memoria volátil del programa.
+
+---
+
+##  Correcciones y Modificaciones Clave
+
+Se realizaron varias correcciones y modificaciones fundamentales para la robustez del sistema y la mejora de la fidelidad del modelo.
+La evidencias de las cuales se solicita una reevalación están planteadas en el archivo *Correcciones.txt*
+
+### 1. Modificaciones al Modelo POO y Estructura
+
+| Cambio/Corrección | Descripción | Sub-Competencia | Indicador | Ubicación |
+| :--- | :--- | :--- | :--- | :--- |
+| **Diseño de Clase Reaccion** | Se modificó la estructura interna de `Reaccion` para manejar los reactivos y productos como colecciones (vectores de punteros a `Formula` o estructuras similares) en lugar de propiedades directas. Esto elimina el límite rígido de dos reactivos/dos productos y mejora la modularidad. | **Implementa SICT030A** | Implemento composición (o agregación) siguiendo mi diagrama de clases (3) | Clases `Reaccion.h`/`.cpp` |
+| **Balanceo y Estequiometría** | Se verificó que las clases `Balanceador` y `Estequiometria` operen como **clases de Servicio**, desacoplando la lógica matemática del modelo de datos (`Formula`, `Reaccion`). Solo reciben la instancia de `Reaccion` y los datos necesarios, no tienen estado propio. | **Implementa SICT030A** | Implemento composición (o agregación) siguiendo mi diagrama de clases (3) | Clases `Balanceador.h`/`.cpp` y `Estequiometria.h`/`.cpp` |
+| **Herencia Aplicada** | Se confirmó que la relación de herencia `Elemento -> Metal/NoMetal` se utiliza correctamente para acceder a la funcionalidad base mientras se implementan las especializaciones de cada tipo de elemento. | **Implementa SICT030A** | Implemento herencia de manera correcta y útil (3) | Clases `Metal.h`/`.cpp`, `NoMetal.h`/`.cpp` |
+
+### 2. Estabilidad de Entrada de Datos (Input Buffer)
+
+| Cambio/Corrección | Descripción | Sub-Competencia | Indicador | Ubicación |
+| :--- | :--- | :--- | :--- | :--- |
+| **Limpieza de Buffer** | Se implementó y verificó la función `LimpiarEntrada()` y el uso de `cin.ignore(numeric_limits<streamsize>::max(), '\n');` de forma sistemática y absoluta **después de cada lectura numérica** (`cin >> int/float`) que fuera seguida por una lectura de línea completa (`getline(cin, ...)`). | **Implementa SICT030A** | Codifico métodos y atributos de clase correctamente (1) | Funciones interactivas en `main.cpp` (`CrearElementoInteractivo`, `CrearFormulaInteractivo`, `CalcularEstequiometriaInteractivo`) |
+
+### 3. Estándares de Código y Compilación
+
+| Cambio/Corrección | Descripción | Sub-Competencia | Indicador | Ubicación |
+| :--- | :--- | :--- | :--- | :--- |
+| **Estándares (Nombres)** | Se realizó una revisión para asegurar que los nombres de variables (camelCase), funciones/métodos (camelCase) y clases (PascalCase) sigan los estándares definidos. | **Estándares SICT401A** | Sigo estándares en todo mi código fuente (0) | Archivos `.h` y `.cpp` (General) |
+| **Especificación de Compilación** | Se actualizó la instrucción de compilación para incluir **todos** los archivos de implementación (`.cpp`) necesarios en la línea de comandos de `g++`. | **Estándares SICT401A** | Guardo correctamente los avances en commits durante la materia (1) | Documentación (`README.md`) |
+
+## Instrucción de Compilación (Consola):
+
+Para compilar el proyecto en su totalidad, asegurese de tener todos los archivos descargados, tener todos los cambios guardados y estar en el directorio adecuado, luego use el siguiente comando:
+g++ main.cpp elemento.cpp Metal.cpp NoMetal.cpp Tablaperiodica.cpp Formula.cpp Reaccion.cpp Balanceador.cpp Estequiometria.cpp -o ProyectoQuimica
+
+Y luego ejecute:
+./ProyectoQuimica
+
+Una vez hecho esto puede acceder a la prueba DEMO del proyecto que le permite comprobar la creación de objetos o interactuar con el programa y crear sus propios objetos. 
