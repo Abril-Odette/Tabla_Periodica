@@ -1,0 +1,7 @@
+Para esta nueva versión del proyecto se espera que se reevalúen las evidencias sobre la congruencia y correcta implementación del modelo UML (Diagrama de clases), ya que este fue modificado para lograr ser más útil en la implementación del proyecto.
+Las evidencias a reevaluar son las siguientes:
+- Modelo un diagrama de clase útil para solucionar un problema utilizando UML. Avance 2
+- Utilizo el concepto de herencia en el diagrama de clases de manera adecuada. Avance 2
+- Implemento las clases en c++ siguiendo el diseño del diagrama de clases en UML. Avance 3
+- Implemento clases apegadas a requerimientos a partir de un modelo. Avance 3
+- Sigo estándares en todo mi código fuente: estilo, sangrías, comentarios, nombres, etc. Avance 3
