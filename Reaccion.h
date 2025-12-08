@@ -46,6 +46,11 @@ public:
     void agregarReactivo(Formula* formula, int coeficiente); 
     void agregarProducto(Formula* formula, int coeficiente);
 
+    // Permite modificar el coeficiente de un reactivo por su índice
+    void setCoeficienteReactivo(size_t index, int coeficiente); 
+    // Permite modificar el coeficiente de un producto por su índice
+    void setCoeficienteProducto(size_t index, int coeficiente);
+
     /* ----------------------- Getters ----------------------- */
     string getNombre() const;
     bool esBalanceada() const;
@@ -53,6 +58,8 @@ public:
     // Obtiene las listas de reactivos y productos (útil para Balanceador)
     vector<TerminoReaccion> getReactivos() const;
     vector<TerminoReaccion> getProductos() const;
+    // Obtiene el coeficiente estequiométrico de una fórmula dada. Devuelve 0 si no existe.
+    int getCoeficiente(Formula* formula) const;
 
     /* ----------------------- Métodos ----------------------- */
     // Muestra la reacción completa en formato textual (ej: H2 + O2 -> H2O)
@@ -68,3 +75,4 @@ public:
 
 
 #endif
+
