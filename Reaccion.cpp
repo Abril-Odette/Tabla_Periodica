@@ -38,6 +38,20 @@ void Reaccion::agregarProducto(Formula* formula, int coeficiente) {
     }
 }
 
+// Establece el coeficiente de un reactivo por su índice
+void Reaccion::setCoeficienteReactivo(size_t index, int coeficiente) {
+    if (index < reactivos.size()) {
+        reactivos[index].second = coeficiente;
+    }
+}
+
+// Establece el coeficiente de un producto por su índice
+void Reaccion::setCoeficienteProducto(size_t index, int coeficiente) {
+    if (index < productos.size()) {
+        productos[index].second = coeficiente;
+    }
+}
+
 /* ----------------------- Getters ----------------------- */
 
 string Reaccion::getNombre() const {
@@ -56,6 +70,27 @@ vector<TerminoReaccion> Reaccion::getReactivos() const {
 // Obtiene la lista de productos
 vector<TerminoReaccion> Reaccion::getProductos() const {
     return productos;
+}
+
+// Obtiene el coeficiente estequiométrico de una fórmula dada
+int Reaccion::getCoeficiente(Formula* formula) const {
+    if (formula == nullptr) return 0;
+
+    // Buscar en Reactivos
+    for (const auto& termino : reactivos) {
+        if (termino.first == formula) {
+            return termino.second;
+        }
+    }
+    
+    // Buscar en Productos
+    for (const auto& termino : productos) {
+        if (termino.first == formula) {
+            return termino.second;
+        }
+    }
+    
+    return 0; // Fórmula no encontrada en la reacción
 }
 
 /* ----------------------- Métodos ----------------------- */
@@ -172,3 +207,4 @@ int Reaccion::getTotalAtomosProducto(string simbolo) const {
     return total;
 
 }
+
