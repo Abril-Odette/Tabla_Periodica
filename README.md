@@ -44,7 +44,7 @@ El usuario puede ejecutar tareas típicas de química básica, ahora con soporte
 
 ##  Pruebas de Funcionalidad Inicial (Modo Interactivo)
 
-Para verificar el funcionamiento del balanceo y la estequiometría, se recomienda registrar los elementos y fórmulas necesarios para la reacción de la **Fotosíntesis** ($\text{CO}_2 + \text{H}_2\text{O} \to \text{C}_6\text{H}_{12}\text{O}_6 + \text{O}_2$), la cual debe balancearse a $6\text{CO}_2 + 6\text{H}_2\text{O} \to 1\text{C}_6\text{H}_{12}\text{O}_6 + 6\text{O}_2$.
+Para verificar el funcionamiento del balanceo y la estequiometría, se recomienda registrar los elementos y fórmulas necesarios para la reacción de la **Fotosíntesis**.
 
 Sigue los siguientes pasos en la **Opción 2: INSTANCIA INTERACTIVA**.
 
