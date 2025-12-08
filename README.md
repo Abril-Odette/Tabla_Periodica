@@ -23,7 +23,7 @@ La solución está construida bajo un diseño POO que separa claramente las resp
     * **Formula:** Compuesto químico que utiliza **Composición/Agregación** al contener una lista de punteros a `Elemento` y sus respectivos subíndices. Es capaz de calcular su propia Masa Molar.
     * **Reaccion:** Contiene dos listas de objetos `Formula` (Reactivos y Productos). Modificación clave: Su estructura fue modificada para manejar la reacción como una **ecuación química dinámica**.
 
-3.  **Módulos de Servicio (Lógica del Negocio):**
+3.  **Módulos de Servicio (Lógica de los cálculos):**
     * **Balanceador:** Contiene la lógica matemática (método algebraico) para calcular los coeficientes estequiométricos enteros mínimos de una `Reaccion`.
     * **Estequiometria:** Contiene los métodos para realizar cálculos de conversión de masa a masa o masa a moles, utilizando los coeficientes de una reacción **balanceada**.
 
