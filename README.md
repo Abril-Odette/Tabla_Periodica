@@ -109,6 +109,7 @@ El proyecto cumple satisfactoriamente con todos los requerimientos funcionales e
 
 Se realizaron varias correcciones y modificaciones fundamentales para la robustez del sistema y la mejora de la fidelidad del modelo.
 La evidencias de las cuales se solicita una reevalación están planteadas en el archivo *Correcciones.txt*
+Se volvió a cargar el diagráma UML, ya que se habían subido versiones que no eran el archivo fianl correcto
 
 ### 1. Modificaciones al Modelo POO y Estructura
 
